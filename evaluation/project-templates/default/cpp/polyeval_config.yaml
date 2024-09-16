@@ -1,0 +1,7 @@
+sources:
+  main: src/main.cpp
+
+commands:
+  build: g++ -std=c++23 src/main.cpp -o test
+  run: ./test
+

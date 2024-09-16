@@ -1,0 +1,8 @@
+sources:
+  main: src/main.mjs
+
+commands:
+  build: node -c src/main.mjs
+  run: node src/main.mjs
+
+

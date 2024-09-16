@@ -1,0 +1,10 @@
+sources:
+  main: src/main.cpp
+  target: src/target.cpp
+  target_h: src/target.h
+
+commands:
+  install: conan install . -s build_type=Release -of ./build -pr ./conan_profile
+  build: conan build . -of ./build -pr ./conan_profile
+  run: ./build/test
+

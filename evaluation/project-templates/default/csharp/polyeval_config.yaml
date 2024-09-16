@@ -1,0 +1,7 @@
+sources:
+  main: src/Main.cs
+
+commands:
+  build: dotnet build --disable-build-servers
+  run: dotnet run --disable-build-servers
+

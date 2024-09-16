@@ -1,0 +1,7 @@
+sources:
+  main: src/Main.java
+
+commands:
+  build: javac src/Main.java
+  run: java src.Main
+

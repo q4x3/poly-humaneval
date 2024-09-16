@@ -1,0 +1,6 @@
+sources:
+  main: src/main.rb
+
+commands:
+  build: ruby -c src/main.rb
+  run: ruby src/main.rb

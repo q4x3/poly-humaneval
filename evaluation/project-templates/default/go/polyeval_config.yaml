@@ -1,0 +1,7 @@
+sources:
+  main: src/main.go
+
+commands:
+  build: go build src/main.go
+  run: ./main
+

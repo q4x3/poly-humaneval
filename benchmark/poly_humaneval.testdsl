@@ -1,0 +1,2651 @@
+problem HumanEval/0 {
+    code {
+        func has_close_elements(numbers:list<double>, threshold:double) -> bool
+    }
+    tests {
+        template nse {
+            ([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) -> true
+            ([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) -> false
+            ([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) -> true
+            ([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) -> false
+            ([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) -> true
+            ([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) -> true
+            ([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) -> false
+        }
+    }
+}
+problem HumanEval/1 {
+    code {
+        func separate_paren_groups(paren_string:string) -> list<string>
+    }
+    tests {
+        template nse {
+            ("(()()) ((())) () ((())()())") -> ["(()())", "((()))", "()", "((())()())"]
+            ("() (()) ((())) (((())))") -> ["()", "(())", "((()))", "(((())))"]
+            ("(()(())((())))") -> ["(()(())((())))"]
+            ("( ) (( )) (( )( ))") -> ["()", "(())", "(()())"]
+        }
+    }
+}
+problem HumanEval/2 {
+    code {
+        func truncate_number(num:double) -> double
+    }
+    tests {
+        template nse {
+            (3.5) -> 0.5
+            (1.33) -> 0.33
+            (123.456) -> 0.456
+        }
+    }
+}
+problem HumanEval/3 {
+    code {
+        func below_zero(operations:list<int>) -> bool
+    }
+    tests {
+        template nse {
+            ([]) -> false
+            ([1, 2, -3, 1, 2, -3]) -> false
+            ([1, 2, -4, 5, 6]) -> true
+            ([1, -1, 2, -2, 5, -5, 4, -4]) -> false
+            ([1, -1, 2, -2, 5, -5, 4, -5]) -> true
+            ([1, -2, 2, -2, 5, -5, 4, -4]) -> true
+        }
+    }
+}
+problem HumanEval/4 {
+    code {
+        func mean_absolute_deviation(numbers:list<double>) -> double
+    }
+    tests {
+        template nse {
+            ([1.0, 2.0, 3.0]) -> 0.666666667
+            ([1.0, 2.0, 3.0, 4.0]) -> 1.0
+            ([1.0, 2.0, 3.0, 4.0, 5.0]) -> 1.2
+        }
+    }
+}
+problem HumanEval/5 {
+    code {
+        func intersperse(numbers:list<int>, delimiter:int) -> list<int>
+    }
+    tests {
+        template nse {
+            ([], 7) -> []
+            ([5, 6, 3, 2], 8) -> [5, 8, 6, 8, 3, 8, 2]
+            ([2, 2, 2], 2) -> [2, 2, 2, 2, 2]
+        }
+    }
+}
+problem HumanEval/6 {
+    code {
+        func parse_nested_parens(paren_string:string) -> list<int>
+    }
+    tests {
+        template nse {
+            ("(()()) ((())) () ((())()())") -> [2, 3, 1, 3]
+            ("() (()) ((())) (((())))") -> [1, 2, 3, 4]
+            ("(()(())((())))") -> [4]
+        }
+    }
+}
+problem HumanEval/7 {
+    code {
+        func filter_by_substring(strs:list<string>, substring:string) -> list<string>
+    }
+    tests {
+        template nse {
+            ([], "john") -> []
+            (["xxx", "asd", "xxy", "john doe", "xxxAAA", "xxx"], "xxx") -> ["xxx", "xxxAAA", "xxx"]
+            (["xxx", "asd", "aaaxxy", "john doe", "xxxAAA", "xxx"], "xx") -> ["xxx", "aaaxxy", "xxxAAA", "xxx"]
+            (["grunt", "trumpet", "prune", "gruesome"], "run") -> ["grunt", "prune"]
+        }
+    }
+}
+problem HumanEval/8 {
+    code {
+        func sum_product(numbers:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([]) -> [0, 1]
+            ([1, 1, 1]) -> [3, 1]
+            ([100, 0]) -> [100, 0]
+            ([3, 5, 7]) -> [15, 105]
+            ([10]) -> [10, 10]
+        }
+    }
+}
+problem HumanEval/9 {
+    code {
+        func rolling_max(numbers:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([]) -> []
+            ([1, 2, 3, 4]) -> [1, 2, 3, 4]
+            ([4, 3, 2, 1]) -> [4, 4, 4, 4]
+            ([3, 2, 3, 100, 3]) -> [3, 3, 3, 100, 100]
+        }
+    }
+}
+problem HumanEval/10 {
+    code {
+        func make_palindrome(s:string) -> string
+    }
+    tests {
+        template nse {
+            ("") -> ""
+            ("x") -> "x"
+            ("xyz") -> "xyzyx"
+            ("xyx") -> "xyx"
+            ("jerry") -> "jerryrrej"
+        }
+    }
+}
+problem HumanEval/11 {
+    code {
+        func string_xor(a:string, b:string) -> string
+    }
+    tests {
+        template nse {
+            ("111000", "101010") -> "010010"
+            ("1", "1") -> "0"
+            ("0101", "0000") -> "0101"
+        }
+    }
+}
+problem HumanEval/12 {
+    code {
+        func longest(strs:list<string>) -> string?
+    }
+    tests {
+        template nse {
+            ([]) -> null
+            (["x", "y", "z"]) -> "x"
+            (["x", "yyy", "zzzz", "www", "kkkk", "abc"]) -> "zzzz"
+        }
+    }
+}
+problem HumanEval/13 {
+    code {
+        func greatest_common_divisor(a:int, b:int) -> int
+    }
+    tests {
+        template nse {
+            (3, 7) -> 1
+            (10, 15) -> 5
+            (49, 14) -> 7
+            (144, 60) -> 12
+        }
+    }
+}
+problem HumanEval/14 {
+    code {
+        func all_prefixes(s:string) -> list<string>
+    }
+    tests {
+        template nse {
+            ("") -> []
+            ("asdfgh") -> ["a", "as", "asd", "asdf", "asdfg", "asdfgh"]
+            ("WWW") -> ["W", "WW", "WWW"]
+        }
+    }
+}
+problem HumanEval/15 {
+    code {
+        func string_sequence(n:int) -> string
+    }
+    tests {
+        template nse {
+           (0) -> "0"
+           (3) -> "0 1 2 3"
+           (10) -> "0 1 2 3 4 5 6 7 8 9 10"
+        }
+    }
+}
+problem HumanEval/16 {
+    code {
+        func count_distinct_characters(s:string) -> int
+    }
+    tests {
+        template nse {
+            ("") -> 0
+            ("abcde") -> 5
+            ("abcdecadeCADE") -> 5
+            ("aaaaAAAAaaaa") -> 1
+            ("Jerry jERRY JeRRRY") -> 5
+        }
+    }
+}
+problem HumanEval/17 {
+    code {
+        func parse_music(music_string:string) -> list<int>
+    }
+    tests {
+        template nse {
+            ("") -> []
+            ("o o o o") -> [4, 4, 4, 4]
+            (".| .| .| .|") -> [1, 1, 1, 1]
+            ("o| o| .| .| o o o o") -> [2, 2, 1, 1, 4, 4, 4, 4]
+            ("o| .| o| .| o o| o o|") -> [2, 1, 2, 1, 4, 2, 4, 2]
+        }
+    }
+}
+problem HumanEval/18 {
+    code {
+        func how_many_times(s:string, substring:string) -> int
+    }
+    tests {
+        template nse {
+            ("", "x") -> 0
+            ("", "xx") -> 0
+            ("xyxyxyx", "x") -> 4
+            ("cacacacac", "cac") -> 4
+            ("john doe", "john") -> 1
+        }
+    }
+}
+problem HumanEval/19 {
+    code {
+        func sort_numbers(numbers:string) -> string
+    }
+    tests {
+        template nse {
+            ("") -> ""
+            ("three") -> "three"
+            ("three five nine") -> "three five nine"
+            ("five zero four seven nine eight") -> "zero four five seven eight nine"
+            ("six five four three two one zero") -> "zero one two three four five six"
+        }
+    }
+}
+problem HumanEval/20 {
+    code {
+        func find_closest_elements(numbers:list<double>) -> list<double>
+    }
+    tests {
+        template nse {
+            ([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]) -> [3.9, 4.0]
+            ([1.0, 2.0, 5.9, 4.0, 5.0]) -> [5.0, 5.9]
+            ([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]) -> [2.0, 2.2]
+            ([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]) -> [2.0, 2.0]
+            ([1.1, 2.2, 3.1, 4.1, 5.1]) -> [2.2, 3.1]
+        }
+    }
+}
+problem HumanEval/21 {
+    code {
+        func rescale_to_unit(numbers:list<double>) -> list<double>
+    }
+    tests {
+        template nse {
+            ([2.0, 49.9]) -> [0.0, 1.0]
+            ([100.0, 49.9]) -> [1.0, 0.0]
+            ([1.0, 2.0, 3.0, 4.0, 5.0]) -> [0.0, 0.25, 0.5, 0.75, 1.0]
+            ([2.0, 1.0, 5.0, 3.0, 4.0]) -> [0.25, 0.0, 1.0, 0.5, 0.75]
+            ([12.0, 11.0, 15.0, 13.0, 14.0]) -> [0.25, 0.0, 1.0, 0.5, 0.75]
+        }
+    }
+}
+problem HumanEval/22 {
+    code {
+        func filter_integers(values:list<any>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([]) -> []
+            ([4, 23.2, 9, "adasd"]:list<any>) -> [4, 9]
+            ([3, "c", 3, 3, "a", "b"]:list<any>) -> [3, 3, 3]
+        }
+    }
+}
+problem HumanEval/23 {
+    code {
+        func str_length(s:string) -> int
+    }
+    tests {
+        template nse {
+            ("") -> 0
+            ("x") -> 1
+            ("asdasnakj") -> 9
+        }
+    }
+}
+problem HumanEval/24 {
+    code {
+        func largest_divisor(n:int) -> int
+    }
+    tests {
+        template nse {
+           (1) -> 1
+           (3) -> 1
+           (7) -> 1
+           (10) -> 5
+           (100) -> 50
+           (49) -> 7
+        }
+    }
+}
+problem HumanEval/25 {
+    code {
+        func factorize(n:int) -> list<int>
+    }
+    tests {
+        template nse {
+            (2) -> [2]
+            (4) -> [2, 2]
+            (8) -> [2, 2, 2]
+            (57) -> [3, 19]
+            (3249) -> [3, 3, 19, 19]
+            (185193) -> [3, 3, 3, 19, 19, 19]
+            (20577) -> [3, 19, 19, 19]
+            (18) -> [2, 3, 3]
+        }
+    }
+}
+problem HumanEval/26 {
+    code {
+        func remove_duplicates(numbers:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([]) -> []
+            ([1, 2, 3, 4]) -> [1, 2, 3, 4]
+            ([1, 2, 3, 2, 4, 3, 5]) -> [1, 4, 5]
+        }
+    }
+}
+problem HumanEval/27 {
+    code {
+        func flip_case(s:string) -> string
+    }
+    tests {
+        template nse {
+            ("") -> ""
+            ("Hello!") -> "hELLO!"
+            ("These violent delights have violent ends") -> "tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS"
+        }
+    }
+}
+problem HumanEval/28 {
+    code {
+        func concatenate(strs:list<string>) -> string
+    }
+    tests {
+        template nse {
+            ([]) -> ""
+            (["x", "y", "z"]) -> "xyz"
+            (["x", "y", "z", "w", "k"]) -> "xyzwk"
+        }
+    }
+}
+problem HumanEval/29 {
+    code {
+        func filter_by_prefix(strs:list<string>,prefix_str:string) -> list<string>
+    }
+    tests {
+        template nse {
+            ([], "john") -> []
+            (["xxx", "asd", "xxy", "john doe", "xxxAAA", "xxx"], "xxx") -> ["xxx", "xxxAAA", "xxx"]
+        }
+    }
+}
+problem HumanEval/30 {
+    code {
+        func get_positive(l:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([-1, -2, 4, 5, 6]) -> [4, 5, 6]
+            ([5, 3, -5, 2, 3, 3, 9, 0, 123, 1, -10]) -> [5, 3, 2, 3, 3, 9, 123, 1]
+            ([-1, -2]) -> []
+            ([]) -> []
+        }
+    }
+}
+problem HumanEval/31 {
+    code {
+        func is_prime(n:int) -> bool
+    }
+    tests {
+        template nse {
+            (2) -> true
+            (6) -> false
+            (101) -> true
+            (11) -> true
+            (13441) -> true
+            (61) -> true
+            (4) -> false
+            (1) -> false
+            (5) -> true
+            (11) -> true
+            (17) -> true
+            (85) -> false
+            (77) -> false
+            (255379) -> false
+        }
+    }
+}
+problem HumanEval/32 {
+    code {
+        func poly(xs:list<int>, x:double) -> double
+        func find_zero(xs: list<int>) -> double
+    }
+    tests {
+        template nse entry find_zero {
+            ([-7, -10, -2, -3, -3, -6]) -> -0.676478283
+            ([-7, 7, -8, 8, 3, -9]) -> -1.353650390
+            ([-8, -4]) -> -2.0
+            ([6, 9]) -> -0.666666667
+            ([-10, -5, 3, 1]) -> -1.381966011
+        }
+    }
+}
+problem HumanEval/33 {
+    code {
+        func sort_third(l:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([1, 2, 3]) -> [1, 2, 3]
+            ([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) -> [1, 3, -5, 2, -3, 3, 5, 0, 123, 9, -10]
+            ([5, 8, -12, 4, 23, 2, 3, 11, 12, -10]) -> [-10, 8, -12, 3, 23, 2, 4, 11, 12, 5]
+            ([5, 6, 3, 4, 8, 9, 2]) -> [2, 6, 3, 4, 8, 9, 5]
+            ([5, 8, 3, 4, 6, 9, 2]) -> [2, 8, 3, 4, 6, 9, 5]
+            ([5, 6, 9, 4, 8, 3, 2]) -> [2, 6, 9, 4, 8, 3, 5]
+            ([5, 6, 3, 4, 8, 9, 2, 1]) -> [2, 6, 3, 4, 8, 9, 5, 1]
+        }
+    }
+}
+problem HumanEval/34 {
+    code {
+        func list_unique(l:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([5, 3, 5, 2, 3, 3, 9, 0, 123]) -> [0, 2, 3, 5, 9, 123]
+        }
+    }
+}
+problem HumanEval/35 {
+    code {
+        func max_element(l:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([1, 2, 3]) -> 3
+            ([5, 3, -5, 2, -3, 3, 9, 0, 124, 1, -10]) -> 124
+        }
+    }
+}
+problem HumanEval/36 {
+    code {
+        func fizz_buzz(n:int) -> int
+    }
+    tests {
+        template nse {
+            (50) -> 0
+            (78) -> 2
+            (79) -> 3
+            (100) -> 3
+            (200) -> 6
+            (4000) -> 192
+            (10000) -> 639
+            (100000) -> 8026
+        }
+    }
+}
+problem HumanEval/37 {
+    code {
+        func sort_even(l:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([1, 2, 3]) -> [1, 2, 3]
+            ([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]) -> [-10, 3, -5, 2, -3, 3, 5, 0, 9, 1, 123]
+            ([5, 8, -12, 4, 23, 2, 3, 11, 12, -10]) -> [-12, 8, 3, 4, 5, 2, 12, 11, 23, -10]
+        }
+    }
+}
+problem HumanEval/38 {
+    code {
+        func encode_cyclic(s:string) -> string
+        func decode_cyclic(s:string) -> string
+    }
+    tests {
+        template nse entry encode_cyclic {
+            ("mytizjrrzawvq") -> "ytmzjirzrwvaq"
+            ("zidqktdmkso") -> "idzktqmkdso"
+            ("yxubudtehdyoblsrvvh") -> "xuyudbehtyodlsbvvrh"
+            ("gvmumhsmcvmdlc") -> "vmgmhumcsmdvlc"
+            ("jfmqwvbhpcqrpaxokg") -> "fmjwvqhpbqrcaxpkgo"
+            ("tszbcpqvdszyz") -> "sztcpbvdqzysz"
+        }
+        template nse entry decode_cyclic {
+            ("ytmzjirzrwvaq") -> "mytizjrrzawvq"
+            ("idzktqmkdso") -> "zidqktdmkso"
+            ("xuyudbehtyodlsbvvrh") -> "yxubudtehdyoblsrvvh"
+            ("vmgmhumcsmdvlc") -> "gvmumhsmcvmdlc"
+            ("fmjwvqhpbqrcaxpkgo") -> "jfmqwvbhpcqrpaxokg"
+            ("sztcpbvdqzysz") -> "tszbcpqvdszyz"
+        }
+    }
+}
+problem HumanEval/39 {
+    code {
+        func prime_fib(n:int) -> int
+    }
+    tests {
+        template nse {
+            (1) -> 2
+            (2) -> 3
+            (3) -> 5
+            (4) -> 13
+            (5) -> 89
+            (6) -> 233
+            (7) -> 1597
+            (8) -> 28657
+            (9) -> 514229
+            (10) -> 433494437
+        }
+    }
+}
+problem HumanEval/40 {
+    code {
+        func triples_sum_to_zero(l:list<int>) -> bool
+    }
+    tests {
+        template nse {
+            ([1, 3, 5, 0]) -> false
+            ([1, 3, 5, -1]) -> false
+            ([1, 3, -2, 1]) -> true
+            ([1, 2, 3, 7]) -> false
+            ([1, 2, 5, 7]) -> false
+            ([2, 4, -5, 3, 9, 7]) -> true
+            ([1]) -> false
+            ([1, 3, 5, -100]) -> false
+            ([100, 3, 5, -100]) -> false
+        }
+    }
+}
+problem HumanEval/41 {
+    code {
+        func car_race_collision(n:int) -> int
+    }
+    tests {
+        template nse {
+            (2) -> 4
+            (3) -> 9
+            (4) -> 16
+            (8) -> 64
+            (10) -> 100
+        }
+    }
+}
+problem HumanEval/42 {
+    code {
+        func incr_list(l:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([]) -> []
+            ([3, 2, 1]) -> [4, 3, 2]
+            ([5, 2, 5, 2, 3, 3, 9, 0, 123]) -> [6, 3, 6, 3, 4, 4, 10, 1, 124]
+        }
+    }
+}
+problem HumanEval/43 {
+    code {
+        func pairs_sum_to_zero(l:list<int>) -> bool
+    }
+    tests {
+        template nse {
+            ([1, 3, 5, 0]) -> false
+            ([1, 3, -2, 1]) -> false
+            ([1, 2, 3, 7]) -> false
+            ([2, 4, -5, 3, 5, 7]) -> true
+            ([1]) -> false
+            ([-3, 9, -1, 3, 2, 30]) -> true
+            ([-3, 9, -1, 3, 2, 31]) -> true
+            ([-3, 9, -1, 4, 2, 30]) -> false
+            ([-3, 9, -1, 4, 2, 31]) -> false
+        }
+    }
+}
+problem HumanEval/44 {
+    code {
+        func change_base(x:int, bas:int) -> string
+    }
+    tests {
+        template nse {
+            (8, 3) -> "22"
+            (9, 3) -> "100"
+            (234, 2) -> "11101010"
+            (16, 2) -> "10000"
+            (8, 2) -> "1000"
+            (7, 2) -> "111"
+        }
+    }
+}
+problem HumanEval/45 {
+    code {
+        func triangle_area(a:int, h:int) -> double
+    }
+    tests {
+        template nse {
+            (5, 3) -> 7.5
+            (2, 2) -> 2.0
+            (10, 8) -> 40.0
+        }
+    }
+}
+problem HumanEval/46 {
+    code {
+        func fib4(n:int) -> int
+    }
+    tests {
+        template nse {
+            (5) -> 4
+            (8) -> 28
+            (10) -> 104
+            (12) -> 386
+        }
+    }
+}
+problem HumanEval/47 {
+    code {
+        func median(l:list<double>) -> double
+    }
+    tests {
+        template nse {
+            ([3.0, 1.0, 2.0, 4.0, 5.0]) -> 3.0
+            ([-10.0, 4.0, 6.0, 1000.0, 10.0, 20.0]) -> 8.0
+            ([5.0]) -> 5.0
+            ([6.0, 5.0]) -> 5.5
+            ([8.0, 1.0, 3.0, 9.0, 9.0, 2.0, 7.0]) -> 7.0
+        }
+    }
+}
+problem HumanEval/48 {
+    code {
+        func is_palindrome(txt:string) -> bool
+    }
+    tests {
+        template nse {
+            ("") -> true
+            ("aba") -> true
+            ("aaaaa") -> true
+            ("zbcd") -> false
+            ("xywyx") -> true
+            ("xywyz") -> false
+            ("xywzx") -> false
+        }
+    }
+}
+problem HumanEval/49 {
+    code {
+        func modp(n:int, p:int) -> int
+    }
+    tests {
+        template nse {
+            (3, 5) -> 3
+            (1101, 101) -> 2
+            (0, 101) -> 1
+            (3, 11) -> 8
+            (100, 101) -> 1
+            (30, 5) -> 4
+            (31, 5) -> 3
+        }
+    }
+}
+problem HumanEval/50 {
+    code {
+        func encode_shift(s:string) -> string
+        func decode_shift(s:string) -> string
+    }
+    tests {
+        template nse entry encode_shift {
+            ("tjbezteoxdy") -> "yogjeyjtcid"
+            ("upfyntqesrvmqzfcan") -> "zukdsyvjxwarvekhfs"
+            ("yserjrgildff") -> "dxjwowlnqikk"
+            ("kxrzezojaphjjqmdfet") -> "pcwejetofumoovrikjy"
+            ("yptfbgkbpxe") -> "duykglpgucj"
+            ("daeigpcpodjwcq") -> "ifjnluhutiobhv"
+            ("ledaheetgqdxyqr") -> "qjifmjjylvicdvw"
+        }
+        template nse entry decode_shift {
+            ("yogjeyjtcid") -> "tjbezteoxdy"
+            ("zukdsyvjxwarvekhfs") -> "upfyntqesrvmqzfcan"
+            ("dxjwowlnqikk") -> "yserjrgildff"
+            ("pcwejetofumoovrikjy") -> "kxrzezojaphjjqmdfet"
+            ("duykglpgucj") -> "yptfbgkbpxe"
+            ("ifjnluhutiobhv") -> "daeigpcpodjwcq"
+            ("qjifmjjylvicdvw") -> "ledaheetgqdxyqr"
+        }
+    }
+}
+problem HumanEval/51 {
+    code {
+        func remove_vowels(txt:string) -> string
+    }
+    tests {
+        template nse {
+            ("") -> ""
+            ("abcdef\nghijklm") -> "bcdf\nghjklm"
+            ("fedcba") -> "fdcb"
+            ("eeeee") -> ""
+            ("acBAA") -> "cB"
+            ("EcBOO") -> "cB"
+            ("ybcd") -> "ybcd"
+        }
+    }
+}
+problem HumanEval/52 {
+    code {
+        func below_threshold(l:list<int>, t:int) -> bool
+    }
+    tests {
+        template nse {
+            ([1, 2, 4, 10], 100) -> true
+            ([1, 20, 4, 10], 5) -> false
+            ([1, 20, 4, 10], 21) -> true
+            ([1, 20, 4, 10], 22) -> true
+            ([1, 8, 4, 10], 11) -> true
+            ([1, 8, 4, 10], 10) -> false
+        }
+    }
+}
+problem HumanEval/53 {
+    code {
+        func add(x:int, y:int) -> int
+    }
+    tests {
+        template nse {
+            (0, 1) -> 1
+            (1, 0) -> 1
+            (2, 3) -> 5
+            (5, 7) -> 12
+            (7, 5) -> 12
+        }
+    }
+}
+problem HumanEval/54 {
+    code {
+        func same_chars(s0:string, s1:string) -> bool
+    }
+    tests {
+        template nse {
+            ("eabcdzzzz", "dddzzzzzzzddeddabc") -> true
+            ("abcd", "dddddddabc") -> true
+            ("dddddddabc", "abcd") -> true
+            ("eabcd", "dddddddabc") -> false
+            ("abcd", "dddddddabcf") -> false
+            ("eabcdzzzz", "dddzzzzzzzddddabc") -> false
+            ("aabb", "aaccc") -> false
+        }
+    }
+}
+problem HumanEval/55 {
+    code {
+        func fib(n:int) -> int
+    }
+    tests {
+        template nse {
+            (10) -> 55
+            (1) -> 1
+            (8) -> 21
+            (11) -> 89
+            (12) -> 144
+        }
+    }
+}
+problem HumanEval/56 {
+    code {
+        func correct_bracketing(brackets:string) -> bool
+    }
+    tests {
+        template nse {
+            ("<>") -> true
+            ("<<><>>") -> true
+            ("<><><<><>><>") -> true
+            ("<><><<<><><>><>><<><><<>>>") -> true
+            ("<<<><>>>>") -> false
+            ("><<>") -> false
+            ("<") -> false
+            ("<<<<") -> false
+            (">") -> false
+            ("<<>") -> false
+            ("<><><<><>><>><<>") -> false
+            ("<><><<><>><>>><>") -> false
+        }
+    }
+}
+problem HumanEval/57 {
+    code {
+        func monotonic(l:list<int>) -> bool
+    }
+    tests {
+        template nse {
+            ([1, 2, 4, 10]) -> true
+            ([1, 2, 4, 20]) -> true
+            ([1, 20, 4, 10]) -> false
+            ([4, 1, 0, -10]) -> true
+            ([4, 1, 1, 0]) -> true
+            ([1, 2, 3, 2, 5, 60]) -> false
+            ([1, 2, 3, 4, 5, 60]) -> true
+            ([9, 9, 9, 9]) -> true
+        }
+    }
+}
+problem HumanEval/58 {
+    code {
+        func common(l1:list<int>, l2:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]) -> [1, 5, 653]
+            ([5, 3, 2, 8], [3, 2]) -> [2, 3]
+            ([4, 3, 2, 8], [3, 2, 4]) -> [2, 3, 4]
+            ([4, 3, 2, 8], []) -> []
+        }
+    }
+}
+problem HumanEval/59 {
+    code {
+        func largest_prime_factor(n:int) -> int
+    }
+    tests {
+        template nse {
+            (15) -> 5
+            (27) -> 3
+            (63) -> 7
+            (330) -> 11
+            (13195) -> 29
+        }
+    }
+}
+problem HumanEval/60 {
+    code {
+        func sum_to_n(n:int) -> int
+    }
+    tests {
+        template nse {
+            (1) -> 1
+            (6) -> 21
+            (11) -> 66
+            (30) -> 465
+            (100) -> 5050
+        }
+    }
+}
+problem HumanEval/61 {
+    code {
+        func correct_bracketing(brackets:string) -> bool
+    }
+    tests {
+        template nse {
+            ("()") -> true
+            ("(()())") -> true
+            ("()()(()())()") -> true
+            ("()()((()()())())(()()(()))") -> true
+            ("((()())))") -> false
+            (")(()") -> false
+            ("(") -> false
+            ("((((") -> false
+            (")") -> false
+            ("(()") -> false
+            ("()()(()())())(()") -> false
+            ("()()(()())()))()") -> false
+        }
+    }
+}
+problem HumanEval/62 {
+    code {
+        func derivative(xs:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([3, 1, 2, 4, 5]) -> [1, 4, 12, 20]
+            ([1, 2, 3]) -> [2, 6]
+            ([3, 2, 1]) -> [2, 2]
+            ([3, 2, 1, 0, 4]) -> [2, 2, 0, 16]
+            ([1]) -> []
+        }
+    }
+}
+problem HumanEval/63 {
+    code {
+        func fibfib(n:int) -> int
+    }
+    tests {
+        template nse {
+            (2) -> 1
+            (1) -> 0
+            (5) -> 4
+            (8) -> 24
+            (10) -> 81
+            (12) -> 274
+            (14) -> 927
+        }
+    }
+}
+problem HumanEval/64 {
+    code {
+        func vowels_count(s:string) -> int
+    }
+    tests {
+        template nse {
+            ("abcde") -> 2
+            ("Alone") -> 3
+            ("key") -> 2
+            ("bye") -> 1
+            ("keY") -> 2
+            ("bYe") -> 1
+            ("ACEDY") -> 3
+        }
+    }
+}
+problem HumanEval/65 {
+    code {
+        func circular_shift(x:int, shift:int) -> string
+    }
+    tests {
+        template nse {
+            (100, 2) -> "001"
+            (12, 2) -> "12"
+            (97, 8) -> "79"
+            (12, 1) -> "21"
+            (11, 101) -> "11"
+        }
+    }
+}
+problem HumanEval/66 {
+    code {
+        func digit_sum(s:string) -> int
+    }
+    tests {
+        template nse {
+            ("") -> 0
+            ("abAB") -> 131
+            ("abcCd") -> 67
+            ("helloE") -> 69
+            ("woArBld") -> 131
+            ("aAaaaXa") -> 153
+            (" How are yOu?") -> 151
+            ("You arE Very Smart") -> 327
+        }
+    }
+}
+problem HumanEval/67 {
+    code {
+        func fruit_distribution(s:string, n:int) -> int
+    }
+    tests {
+        template nse {
+            ("5 apples and 6 oranges", 19) -> 8
+            ("5 apples and 6 oranges", 21) -> 10
+            ("0 apples and 1 oranges", 3) -> 2
+            ("1 apples and 0 oranges", 3) -> 2
+            ("2 apples and 3 oranges", 100) -> 95
+            ("2 apples and 3 oranges", 5) -> 0
+            ("1 apples and 100 oranges", 120) -> 19
+        }
+    }
+}
+problem HumanEval/68 {
+    code {
+        func pluck(arr:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([4,2,3]) -> [2, 1]
+            ([1,2,3]) -> [2, 1]
+            ([]) -> []
+            ([5, 0, 3, 0, 4, 2]) -> [0, 1]
+            ([1, 2, 3, 0, 5, 3]) -> [0, 3]
+            ([5, 4, 8, 4 ,8]) -> [4, 1]
+            ([7, 6, 7, 1]) -> [6, 1]
+            ([7, 9, 7, 1]) -> []
+        }
+    }
+}
+problem HumanEval/69 {
+    code {
+        func search(lst:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([5, 5, 5, 5, 1]) -> 1
+            ([4, 1, 4, 1, 4, 4]) -> 4
+            ([3, 3]) -> -1
+            ([8, 8, 8, 8, 8, 8, 8, 8]) -> 8
+            ([2, 3, 3, 2, 2]) -> 2
+            ([2, 7, 8, 8, 4, 8, 7, 3, 9, 6, 5, 10, 4, 3, 6, 7, 1, 7, 4, 10, 8, 1]) -> 1
+            ([3, 2, 8, 2]) -> 2
+            ([6, 7, 1, 8, 8, 10, 5, 8, 5, 3, 10]) -> 1
+            ([8, 8, 3, 6, 5, 6, 4]) -> -1
+            ([6, 9, 6, 7, 1, 4, 7, 1, 8, 8, 9, 8, 10, 10, 8, 4, 10, 4, 10, 1, 2, 9, 5, 7, 9]) -> 1
+            ([1, 9, 10, 1, 3]) -> 1
+            ([6, 9, 7, 5, 8, 7, 5, 3, 7, 5, 10, 10, 3, 6, 10, 2, 8, 6, 5, 4, 9, 5, 3, 10]) -> 5
+            ([1]) -> 1
+            ([8, 8, 10, 6, 4, 3, 5, 8, 2, 4, 2, 8, 4, 6, 10, 4, 2, 1, 10, 2, 1, 1, 5]) -> 4
+            ([2, 10, 4, 8, 2, 10, 5, 1, 2, 9, 5, 5, 6, 3, 8, 6, 4, 10]) -> 2
+            ([1, 6, 10, 1, 6, 9, 10, 8, 6, 8, 7, 3]) -> 1
+            ([9, 2, 4, 1, 5, 1, 5, 2, 5, 7, 7, 7, 3, 10, 1, 5, 4, 2, 8, 4, 1, 9, 10, 7, 10, 2, 8, 10, 9, 4]) -> 4
+            ([2, 6, 4, 2, 8, 7, 5, 6, 4, 10, 4, 6, 3, 7, 8, 8, 3, 1, 4, 2, 2, 10, 7]) -> 4
+            ([9, 8, 6, 10, 2, 6, 10, 2, 7, 8, 10, 3, 8, 2, 6, 2, 3, 1]) -> 2
+            ([5, 5, 3, 9, 5, 6, 3, 2, 8, 5, 6, 10, 10, 6, 8, 4, 10, 7, 7, 10, 8]) -> -1
+            ([10]) -> -1
+            ([9, 7, 7, 2, 4, 7, 2, 10, 9, 7, 5, 7, 2]) -> 2
+            ([5, 4, 10, 2, 1, 1, 10, 3, 6, 1, 8]) -> 1
+            ([7, 9, 9, 9, 3, 4, 1, 5, 9, 1, 2, 1, 1, 10, 7, 5, 6, 7, 6, 7, 7, 6]) -> 1
+            ([3, 10, 10, 9, 2]) -> -1
+        }
+    }
+}
+problem HumanEval/70 {
+    code {
+        func strange_sort_list(lst:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([1, 2, 3, 4]) -> [1, 4, 2, 3]
+            ([5, 6, 7, 8, 9]) -> [5, 9, 6, 8, 7]
+            ([1, 2, 3, 4, 5]) -> [1, 5, 2, 4, 3]
+            ([5, 6, 7, 8, 9, 1]) -> [1, 9, 5, 8, 6, 7]
+            ([5, 5, 5, 5]) -> [5, 5, 5, 5]
+            ([]) -> []
+            ([1, 2, 3, 4, 5, 6, 7, 8]) -> [1, 8, 2, 7, 3, 6, 4, 5]
+            ([0, 2, 2, 2, 5, 5, -5, -5]) -> [-5, 5, -5, 5, 0, 2, 2, 2]
+            ([111111]) -> [111111]
+        }
+    }
+}
+problem HumanEval/71 {
+    code {
+        func triangle_area(a:int, b:int, c:int) -> double
+    }
+    tests {
+        template nse {
+            (3, 4, 5) -> 6.0
+            (1, 2, 10) -> -1.0
+            (4, 8, 5) -> 8.181534086
+            (2, 2, 2) -> 1.732050808
+            (1, 2, 3) -> -1.0
+            (10, 5, 7) -> 16.248076809
+            (2, 6, 3) -> -1.0
+            (1, 1, 1) -> 0.433012702
+            (2, 2, 10) -> -1.0
+        }
+    }
+}
+problem HumanEval/72 {
+    code {
+        func will_it_fly(q:list<int>, w:int) -> bool
+    }
+    tests {
+        template nse {
+            ([3, 2, 3], 9) -> true
+            ([1, 2], 5) -> false
+            ([3], 5) -> true
+            ([3, 2, 3], 1) -> false
+            ([1, 2, 3], 6) -> false
+            ([5], 5) -> true
+        }
+    }
+}
+problem HumanEval/73 {
+    code {
+        func smallest_change(arr:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([1,2,3,5,4,7,9,6]) -> 4
+            ([1, 2, 3, 4, 3, 2, 2]) -> 1
+            ([1, 4, 2]) -> 1
+            ([1, 4, 4, 2]) -> 1
+            ([1, 2, 3, 2, 1]) -> 0
+            ([3, 1, 1, 3]) -> 0
+            ([1]) -> 0
+            ([0, 1]) -> 1
+        }
+    }
+}
+problem HumanEval/74 {
+    code {
+        func total_match(lst1:list<string>, lst2:list<string>) -> list<string>
+    }
+    tests {
+        template nse {
+            ([], []) -> []
+            (["hi", "admin"], ["hi", "hi"]) -> ["hi", "hi"]
+            (["hi", "admin"], ["hi", "hi", "admin", "project"]) -> ["hi", "admin"]
+            (["4"], ["1", "2", "3", "4", "5"]) -> ["4"]
+            (["hi", "admin"], ["hI", "Hi"]) -> ["hI", "Hi"]
+            (["hi", "admin"], ["hI", "hi", "hi"]) -> ["hI", "hi", "hi"]
+            (["hi", "admin"], ["hI", "hi", "hii"]) -> ["hi", "admin"]
+            ([], ["this"]) -> []
+            (["this"], []) -> []
+        }
+    }
+}
+problem HumanEval/75 {
+    code {
+        func is_multiply_prime(a:int) -> bool
+    }
+    tests {
+        template nse {
+            (5) -> false
+            (30) -> true
+            (8) -> true
+            (10) -> false
+            (125) -> true
+            (105) -> true
+            (126) -> false
+            (729) -> false
+            (891) -> false
+            (1001) -> true
+        }
+    }
+}
+problem HumanEval/76 {
+    code {
+        func is_simple_power(x:int, n:int) -> bool
+    }
+    tests {
+        template nse {
+            (1, 4) -> true
+            (2, 2) -> true
+            (8, 2) -> true
+            (3, 2) -> false
+            (3, 1) -> false
+            (5, 3) -> false
+            (16, 2) -> true
+            (143214, 16) -> false
+            (4, 2) -> true
+            (9, 3) -> true
+            (16, 4) -> true
+            (24, 2) -> false
+            (128, 4) -> false
+            (12, 6) -> false
+            (1, 1) -> true
+            (1, 12) -> true
+        }
+    }
+}
+problem HumanEval/77 {
+    code {
+        func is_cube(a:int) -> bool
+    }
+    tests {
+        template nse {
+            (1) -> true
+            (2) -> false
+            (-1) -> true
+            (64) -> true
+            (180) -> false
+            (1000) -> true
+            (0) -> true
+            (1729) -> false
+        }
+    }
+}
+problem HumanEval/78 {
+    code {
+        func hex_key(num:string) -> int
+    }
+    tests {
+        template nse {
+            ("AB") -> 1
+            ("1077E") -> 2
+            ("ABED1A33") -> 4
+            ("2020") -> 2
+            ("123456789ABCDEF0") -> 6
+            ("112233445566778899AABBCCDDEEFF00") -> 12
+            ("") -> 0
+        }
+    }
+}
+problem HumanEval/79 {
+    code {
+        func decimal_to_binary(dec:int) -> string
+    }
+    tests {
+        template nse {
+            (0) -> "db0db"
+            (32) -> "db100000db"
+            (103) -> "db1100111db"
+            (15) -> "db1111db"
+        }
+    }
+}
+problem HumanEval/80 {
+    code {
+        func is_happy(s:string) -> bool
+    }
+    tests {
+        template nse {
+            ("a") -> false
+            ("aa") -> false
+            ("abcd") -> true
+            ("aabb") -> false
+            ("adb") -> true
+            ("xyy") -> false
+            ("iopaxpoi") -> true
+            ("iopaxioi") -> false
+        }
+    }
+}
+problem HumanEval/81 {
+    code {
+        func numerical_letter_grade(grades:list<double>) -> list<string>
+    }
+    tests {
+        template nse {
+            ([4.0, 3.0, 1.7, 2.0, 3.5]) -> ["A+", "B", "C-", "C", "A-"]
+            ([1.2]) -> ["D+"]
+            ([0.5]) -> ["D-"]
+            ([0.0]) -> ["E"]
+            ([1.0, 0.3, 1.5, 2.8, 3.3]) -> ["D", "D-", "C-", "B", "B+"]
+            ([0.0, 0.7]) -> ["E", "D-"]
+        }
+    }
+}
+problem HumanEval/82 {
+    code {
+        func prime_length(s:string) -> bool
+    }
+    tests {
+        template nse {
+            ("Hello") -> true
+            ("abcdcba") -> true
+            ("kittens") -> true
+            ("orange") -> false
+            ("wow") -> true
+            ("world") -> true
+            ("MadaM") -> true
+            ("Wow") -> true
+            ("") -> false
+            ("HI") -> true
+            ("go") -> true
+            ("gogo") -> false
+            ("aaaaaaaaaaaaaaa") -> false
+            ("Madam") -> true
+            ("M") -> false
+            ("0") -> false
+        }
+    }
+}
+problem HumanEval/83 {
+    code {
+        func starts_one_ends(n:int) -> int
+    }
+    tests {
+        template nse {
+            (1) -> 1
+            (2) -> 18
+            (3) -> 180
+            (4) -> 1800
+            (5) -> 18000
+        }
+    }
+}
+problem HumanEval/84 {
+    code {
+        func solve(n:int) -> string
+    }
+    tests {
+        template nse {
+            (1000) -> "1"
+            (150) -> "110"
+            (147) -> "1100"
+            (333) -> "1001"
+            (963) -> "10010"
+        }
+    }
+}
+problem HumanEval/85 {
+    code {
+        func add(lst:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([4, 88]) -> 88
+            ([4, 5, 6, 7, 2, 122]) -> 122
+            ([4, 0, 6, 7]) -> 0
+            ([4, 4, 6, 8]) -> 12
+        }
+    }
+}
+problem HumanEval/86 {
+    code {
+        func anti_shuffle(s:string) -> string
+    }
+    tests {
+        template nse {
+            ("Hi") -> "Hi"
+            ("hello") -> "ehllo"
+            ("number") -> "bemnru"
+            ("abcd") -> "abcd"
+            ("Hello World!!!") -> "Hello !!!Wdlor"
+            ("") -> ""
+            ("Hi. My name is Mister Robot. How are you?") -> ".Hi My aemn is Meirst .Rboot How aer ?ouy"
+        }
+    }
+}
+problem HumanEval/87 {
+    code {
+        func get_row(lst:list<list<int>>, x:int) -> list<list<int>>
+    }
+    tests {
+        template nse {
+            ([[1,2,3,4,5,6],[1,2,3,4,1,6],[1,2,3,4,5,1]], 1) -> [[0, 0], [1, 4], [1, 0], [2, 5], [2, 0]]
+            ([[1,2,3,4,5,6],[1,2,3,4,5,6],[1,2,3,4,5,6],[1,2,3,4,5,6],[1,2,3,4,5,6],[1,2,3,4,5,6]], 2) -> [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1]]
+            ([[1,2,3,4,5,6],[1,2,3,4,5,6],[1,1,3,4,5,6],[1,2,1,4,5,6],[1,2,3,1,5,6],[1,2,3,4,1,6],[1,2,3,4,5,1]], 1) -> [[0, 0], [1, 0], [2, 1], [2, 0], [3, 2], [3, 0], [4, 3], [4, 0], [5, 4], [5, 0], [6, 5], [6, 0]]
+            ([], 1) -> []
+            ([[1]], 2) -> []
+            ([[], [1], [1, 2, 3]], 3) -> [[2, 2]]
+        }
+    }
+}
+problem HumanEval/88 {
+    code {
+        func sort_array(arr:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([]) -> []
+            ([5]) -> [5]
+            ([2, 4, 3, 0, 1, 5]) -> [0, 1, 2, 3, 4, 5]
+            ([2, 4, 3, 0, 1, 5, 6]) -> [6, 5, 4, 3, 2, 1, 0]
+            ([2, 1]) -> [1, 2]
+            ([15, 42, 87, 32 ,11, 0]) -> [0, 11, 15, 32, 42, 87]
+            ([21, 14, 23, 11]) -> [23, 21, 14, 11]
+        }
+    }
+}
+problem HumanEval/89 {
+    code {
+        func encrypt(s:string) -> string
+    }
+    tests {
+        template nse {
+            ("hi") -> "lm"
+            ("asdfghjkl") -> "ewhjklnop"
+            ("gf") -> "kj"
+            ("et") -> "ix"
+            ("faewfawefaewg") -> "jeiajeaijeiak"
+            ("hellomyfriend") -> "lippsqcjvmirh"
+            ("dxzdlmnilfuhmilufhlihufnmlimnufhlimnufhfucufh") -> "hbdhpqrmpjylqmpyjlpmlyjrqpmqryjlpmqryjljygyjl"
+            ("a") -> "e"
+        }
+    }
+}
+problem HumanEval/90 {
+    code {
+        func next_smallest(lst:list<int>) -> int?
+    }
+    tests {
+        template nse {
+            ([1, 2, 3, 4, 5]) -> 2
+            ([5, 1, 4, 3, 2]) -> 2
+            ([]) -> null
+            ([1, 1]) -> null
+            ([1,1,1,1,0]) -> 1
+            ([1, 0]) -> 1
+            ([-35, 34, 12, -45]) -> -35
+        }
+    }
+}
+problem HumanEval/91 {
+    code {
+        func is_bored(s:string) -> int
+    }
+    tests {
+        template nse {
+            ("Hello world") -> 0
+            ("Is the sky blue?") -> 0
+            ("I love It !") -> 1
+            ("bIt") -> 0
+            ("I feel good today. I will be productive. will kill It") -> 2
+            ("You and I are going for a walk") -> 0
+        }
+    }
+}
+problem HumanEval/92 {
+    code {
+        func any_int(x:any, y:any, z:any) -> bool
+    }
+    tests {
+        template nse {
+            (2, 3, 1) -> true
+            (2.5, 2, 3) -> false
+            (1.5, 5, 3.5) -> false
+            (2, 6, 2) -> false
+            (4, 2, 2) -> true
+            (2.2, 2.2, 2.2) -> false
+            (-4, 6, 2) -> true
+            (2, 1, 1) -> true
+            (3, 4, 7) -> true
+            (3.001, 4, 7) -> false
+        }
+    }
+}
+problem HumanEval/93 {
+    code {
+        func encode(message:string) -> string
+    }
+    tests {
+        template nse {
+            ("TEST") -> "tgst"
+            ("Mudasir") -> "mWDCSKR"
+            ("YES") -> "ygs"
+            ("This is a message") -> "tHKS KS C MGSSCGG"
+            ("I DoNt KnOw WhAt tO WrItE") -> "k dQnT kNqW wHcT Tq wRkTg"
+        }
+    }
+}
+problem HumanEval/94 {
+    code {
+        func skjkasdkd(lst:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3]) -> 10
+            ([1,0,1,8,2,4597,2,1,3,40,1,2,1,2,4,2,5,1]) -> 25
+            ([1,3,1,32,5107,34,83278,109,163,23,2323,32,30,1,9,3]) -> 13
+            ([0,724,32,71,99,32,6,0,5,91,83,0,5,6]) -> 11
+            ([0,81,12,3,1,21]) -> 3
+            ([0,8,1,2,1,7]) -> 7
+            ([8191]) -> 19
+            ([8191, 123456, 127, 7]) -> 19
+            ([127, 97, 8192]) -> 10
+        }
+    }
+}
+problem HumanEval/95 {
+    code {
+        func check_dict_case(d:dict<string,string>) -> bool
+    }
+    tests {
+        template nse {
+            ({"p"=>"pineapple", "b"=>"banana"}) -> true
+            ({"p"=>"pineapple", "A"=>"banana", "B"=>"banana"}) -> false
+            ({"p"=>"pineapple", "5"=>"banana", "a"=>"apple"}) -> false
+            ({"Name"=>"John", "Age"=>"36", "City"=>"Houston"}) -> false
+            ({"STATE"=>"NC", "ZIP"=>"12345" }) -> true
+            ({"fruit"=>"Orange", "taste"=>"Sweet" }) -> true
+            ({}) -> false
+        }
+    }
+}
+problem HumanEval/96 {
+    code {
+        func count_up_to(n:int) -> list<int>
+    }
+    tests {
+        template nse {
+            (5) -> [2,3]
+            (6) -> [2,3,5]
+            (7) -> [2,3,5]
+            (10) -> [2,3,5,7]
+            (0) -> []
+            (22) -> [2,3,5,7,11,13,17,19]
+            (1) -> []
+            (18) -> [2,3,5,7,11,13,17]
+            (47) -> [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43]
+            (101) -> [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+        }
+    }
+}
+problem HumanEval/97 {
+    code {
+        func multiply(a:int, b:int) -> int
+    }
+    tests {
+        template nse {
+            (148, 412) -> 16
+            (19, 28) -> 72
+            (2020, 1851) -> 0
+            (14,-15) -> 20
+            (76, 67) -> 42
+            (17, 27) -> 49
+            (0, 1) -> 0
+            (0, 0) -> 0
+        }
+    }
+}
+problem HumanEval/98 {
+    code {
+        func count_upper(s:string) -> int
+    }
+    tests {
+        template nse {
+            ("aBCdEf")  -> 1
+            ("abcdefg") -> 0
+            ("dBBE") -> 0
+            ("B") -> 0
+            ("U") -> 1
+            ("") -> 0
+            ("EEEE") -> 2
+        }
+    }
+}
+problem HumanEval/99 {
+    code {
+        func closest_integer(value:string) -> int
+    }
+    tests {
+        template nse {
+            ("10") -> 10
+            ("14.5") -> 15
+            ("-15.5") -> -16
+            ("15.3") -> 15
+            ("0") -> 0
+        }
+    }
+}
+problem HumanEval/100 {
+    code {
+        func make_a_pile(n:int) -> list<int>
+    }
+    tests {
+        template nse {
+            (3) -> [3, 5, 7]
+            (4) -> [4,6,8,10]
+            (5) -> [5, 7, 9, 11, 13]
+            (6) -> [6, 8, 10, 12, 14, 16]
+            (8) -> [8, 10, 12, 14, 16, 18, 20, 22]
+        }
+    }
+}
+problem HumanEval/101 {
+    code {
+        func words_string(s:string) -> list<string>
+    }
+    tests {
+        template nse {
+            ("Hi, my name is John") -> ["Hi", "my", "name", "is", "John"]
+            ("One, two, three, four, five, six") -> ["One", "two", "three", "four", "five", "six"]
+            ("Hi, my name") -> ["Hi", "my", "name"]
+            ("One,, two, three, four, five, six,") -> ["One", "two", "three", "four", "five", "six"]
+            ("") -> []
+            ("ahmed     , gamal") -> ["ahmed", "gamal"]
+        }
+    }
+}
+problem HumanEval/102 {
+    code {
+        func choose_num(x:int, y:int) -> int
+    }
+    tests {
+        template nse {
+            (12, 15) -> 14
+            (13, 12) -> -1
+            (33, 12354) -> 12354
+            (5234, 5233) -> -1
+            (6, 29) -> 28
+            (27, 10) -> -1
+            (7, 7) -> -1
+            (546, 546) -> 546
+        }
+    }
+}
+problem HumanEval/103 {
+    code {
+        func rounded_avg(n:int, m:int) -> string?
+    }
+    tests {
+        template nse {
+            (1, 5) -> "11"
+            (7, 13) -> "1010"
+            (964,977) -> "1111001011"
+            (996,997) -> "1111100101"
+            (560,851) -> "1011000010"
+            (185,546) -> "101101110"
+            (362,496) -> "110101101"
+            (350,902) -> "1001110010"
+            (197,233) -> "11010111"
+            (7, 5) -> null
+            (5, 1) -> null
+            (5, 5) -> "101"
+        }
+    }
+}
+problem HumanEval/104 {
+    code {
+        func unique_digits(x:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([15, 33, 1422, 1]) -> [1, 15, 33]
+            ([152, 323, 1422, 10]) -> []
+            ([12345, 2033, 111, 151]) -> [111, 151]
+            ([135, 103, 31]) -> [31, 135]
+        }
+    }
+}
+problem HumanEval/105 {
+    code {
+        func by_length(arr:list<int>) -> list<string>
+    }
+    tests {
+        template nse {
+            ([2, 1, 1, 4, 5, 8, 2, 3]) -> ["Eight", "Five", "Four", "Three", "Two", "Two", "One", "One"]
+            ([]) -> []
+            ([1, -1 , 55]) -> ["One"]
+            ([1, -1, 3, 2]) -> ["Three", "Two", "One"]
+            ([9, 4, 8]) -> ["Nine", "Eight", "Four"]
+        }
+    }
+}
+problem HumanEval/106 {
+    code {
+        func f(n:int) -> list<int>
+    }
+    tests {
+        template nse {
+            (5) -> [1, 2, 6, 24, 15]
+            (7) -> [1, 2, 6, 24, 15, 720, 28]
+            (1) -> [1]
+            (3) -> [1, 2, 6]
+        }
+    }
+}
+problem HumanEval/107 {
+    code {
+        func even_odd_palindrome(n:int) -> list<int>
+    }
+    tests {
+        template nse {
+            (123) -> [8, 13]
+            (12) -> [4, 6]
+            (3) -> [1, 2]
+            (63) -> [6, 8]
+            (25) -> [5, 6]
+            (19) -> [4, 6]
+            (9) -> [4, 5]
+            (1) -> [0, 1]
+        }
+    }
+}
+problem HumanEval/108 {
+    code {
+        func count_nums(arr:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([]) -> 0
+            ([-1, -2, 0]) -> 0
+            ([1, 1, 2, -2, 3, 4, 5]) -> 6
+            ([1, 6, 9, -6, 0, 1, 5]) -> 5
+            ([1, 100, 98, -7, 1, -1]) -> 4
+            ([12, 23, 34, -45, -56, 0]) -> 5
+            ([-0, 1]) -> 1
+            ([1]) -> 1
+        }
+    }
+}
+problem HumanEval/109 {
+    code {
+        func move_one_ball(arr:list<int>) -> bool
+    }
+    tests {
+        template nse {
+            ([3, 4, 5, 1, 2]) -> true
+            ([3, 5, 10, 1, 2]) -> true
+            ([4, 3, 1, 2]) -> false
+            ([3, 5, 4, 1, 2]) -> false
+            ([]) -> true
+        }
+    }
+}
+problem HumanEval/110 {
+    code {
+        func can_exchange(lst1:list<int>, lst2:list<int>) -> string
+    }
+    tests {
+        template nse {
+            ([1, 2, 3, 4], [1, 2, 3, 4]) -> "YES"
+            ([1, 2, 3, 4], [1, 5, 3, 4]) -> "NO"
+            ([1, 2, 3, 4], [2, 1, 4, 3]) -> "YES"
+            ([5, 7, 3], [2, 6, 4]) -> "YES"
+            ([5, 7, 3], [2, 6, 3]) -> "NO"
+            ([3, 2, 6, 1, 8, 9], [3, 5, 5, 1, 1, 1]) -> "NO"
+            ([100, 200], [200, 200]) -> "YES"
+        }
+    }
+}
+problem HumanEval/111 {
+    code {
+        func histogram(test:string) -> dict<string,int>
+    }
+    tests {
+        template nse {
+            ("a b b a") -> {"a"=>2,"b"=>2}
+            ("a b c a b") -> {"a"=>2, "b"=>2}
+            ("a b c d g") -> {"a"=>1, "b"=>1, "c"=>1, "d"=>1, "g"=>1}
+            ("r t g") -> {"r"=>1, "t"=>1, "g"=>1}
+            ("b b b b a") -> {"b"=>4}
+            ("r t g") -> {"r"=>1, "t"=>1, "g"=>1}
+            ("") -> {}
+            ("a") -> {"a"=>1}
+        }
+    }
+}
+problem HumanEval/112 {
+    code {
+        func reverse_delete(s:string, c:string) -> list<string>
+    }
+    tests {
+        template nse {
+            ("abcde","ae") -> ["bcd", "no"]
+            ("abcdef", "b") -> ["acdef", "no"]
+            ("abcdedcba","ab") -> ["cdedc", "yes"]
+            ("dwik","w") -> ["dik", "no"]
+            ("a","a") -> ["", "yes"]
+            ("abcdedcba","") -> ["abcdedcba", "yes"]
+            ("abcdedcba","v") -> ["abcdedcba", "yes"]
+            ("vabba","v") -> ["abba", "yes"]
+            ("mamma", "mia") -> ["", "yes"]
+        }
+    }
+}
+problem HumanEval/113 {
+    code {
+        func odd_count(lst:list<string>) -> list<string>
+    }
+    tests {
+        template nse {
+            (["1234567"]) -> ["the number of odd elements 4n the str4ng 4 of the 4nput."]
+            (["3","11111111"]) -> ["the number of odd elements 1n the str1ng 1 of the 1nput.", "the number of odd elements 8n the str8ng 8 of the 8nput."]
+            (["271", "137", "314"]) -> ["the number of odd elements 2n the str2ng 2 of the 2nput.", "the number of odd elements 3n the str3ng 3 of the 3nput.", "the number of odd elements 2n the str2ng 2 of the 2nput."]
+        }
+    }
+}
+problem HumanEval/114 {
+    code {
+        func min_sub_array_sum(nums:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([2, 3, 4, 1, 2, 4]) -> 1
+            ([-1, -2, -3]) -> -6
+            ([-1, -2, -3, 2, -10]) -> -14
+            ([-99999999]) -> -99999999
+            ([0, 10, 20, 1000000]) -> 0
+            ([-1, -2, -3, 10, -5]) -> -6
+            ([100, -1, -2, -3, 10, -5]) -> -6
+            ([10, 11, 13, 8, 3, 4]) -> 3
+            ([100, -33, 32, -1, 0, -2]) -> -33
+            ([-10]) -> -10
+            ([7]) -> 7
+            ([1, -1]) -> -1
+        }
+    }
+}
+problem HumanEval/115 {
+    code {
+        func max_fill(grid:list<list<int>>, capacity:int) -> int
+    }
+    tests {
+        template nse {
+            ([[0,0,1,0], [0,1,0,0], [1,1,1,1]], 1) -> 6
+            ([[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]], 2) -> 5
+            ([[0,0,0], [0,0,0]], 5) -> 0
+            ([[1,1,1,1], [1,1,1,1]], 2) -> 4
+            ([[1,1,1,1], [1,1,1,1]], 9) -> 2
+        }
+    }
+}
+problem HumanEval/116 {
+    code {
+        func sort_array(arr:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([1,5,2,3,4]) -> [1, 2, 4, 3, 5]
+            ([1,0,2,3,4]) -> [0, 1, 2, 4, 3]
+            ([]) -> []
+            ([2,5,77,4,5,3,5,7,2,3,4]) -> [2, 2, 4, 4, 3, 3, 5, 5, 5, 7, 77]
+            ([3,6,44,12,32,5]) -> [32, 3, 5, 6, 12, 44]
+            ([2,4,8,16,32]) -> [2, 4, 8, 16, 32]
+            ([2,4,8,16,32]) -> [2, 4, 8, 16, 32]
+        }
+    }
+}
+problem HumanEval/117 {
+    code {
+        func select_words(s:string, n:int) -> list<string>
+    }
+    tests {
+        template nse {
+            ("Mary had a little lamb", 4) -> ["little"]
+            ("Mary had a little lamb", 3) -> ["Mary", "lamb"]
+            ("simple white space", 2) -> []
+            ("Hello world", 4) -> ["world"]
+            ("Uncle sam", 3) -> ["Uncle"]
+            ("", 4) -> []
+            ("a b c d e f", 1) -> ["b", "c", "d", "f"]
+        }
+    }
+}
+problem HumanEval/118 {
+    code {
+        func get_closest_vowel(word:string) -> string
+    }
+    tests {
+        template nse {
+            ("yogurt") -> "u"
+            ("full") -> "u"
+            ("easy") -> ""
+            ("eAsy") -> ""
+            ("ali") -> ""
+            ("bad") -> "a"
+            ("most") -> "o"
+            ("ab") -> ""
+            ("ba") -> ""
+            ("quick") -> ""
+            ("anime") -> "i"
+            ("Asia") -> ""
+            ("Above") -> "o"
+        }
+    }
+}
+problem HumanEval/119 {
+    code {
+        func match_parens(lst:list<string>) -> string
+    }
+    tests {
+        template nse {
+            (["()(", ")"]) -> "Yes"
+            ([")", ")"]) -> "No"
+            (["(()(())", "())())"]) -> "No"
+            ([")())", "(()()("]) -> "Yes"
+            (["(())))", "(()())(("]) -> "Yes"
+            (["()", "())"]) -> "No"
+            (["(()(", "()))()"]) -> "Yes"
+            (["((((", "((())"]) -> "No"
+            ([")(()", "(()("]) -> "No"
+            ([")(", ")("]) -> "No"
+            (["(", ")"]) -> "Yes"
+            ([")", "("]) -> "Yes"
+        }
+    }
+}
+problem HumanEval/120 {
+    code {
+        func maximum(arr:list<int>, k:int) -> list<int>
+    }
+    tests {
+        template nse {
+            ([-3, -4, 5], 3) -> [-4, -3, 5]
+            ([4, -4, 4], 2) -> [4, 4]
+            ([-3, 2, 1, 2, -1, -2, 1], 1) -> [2]
+            ([123, -123, 20, 0 , 1, 2, -3], 3) -> [2, 20, 123]
+            ([-123, 20, 0 , 1, 2, -3], 4) -> [0, 1, 2, 20]
+            ([5, 15, 0, 3, -13, -8, 0], 7) -> [-13, -8, 0, 0, 3, 5, 15]
+            ([-1, 0, 2, 5, 3, -10], 2) -> [3, 5]
+            ([1, 0, 5, -7], 1) -> [5]
+            ([4, -4], 2) -> [-4, 4]
+            ([-10, 10], 2) -> [-10, 10]
+            ([1, 2, 3, -23, 243, -400, 0], 0) -> []
+        }
+    }
+}
+problem HumanEval/121 {
+    code {
+        func solution(lst:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([5, 8, 7, 1]) -> 12
+            ([3, 3, 3, 3, 3]) -> 9
+            ([30, 13, 24, 321]) -> 0
+            ([5, 9]) -> 5
+            ([2, 4, 8]) -> 0
+            ([30, 13, 23, 32]) -> 23
+            ([3, 13, 2, 9]) -> 3
+        }
+    }
+}
+problem HumanEval/122 {
+    code {
+        func add_elements(arr:list<int>, k:int) -> int
+    }
+    tests {
+        template nse {
+            ([1,-2,-3,41,57,76,87,88,99], 3) -> -4
+            ([111,121,3,4000,5,6], 2) -> 0
+            ([11,21,3,90,5,6,7,8,9], 4) -> 125
+            ([111,21,3,4000,5,6,7,8,9], 4) -> 24
+            ([1], 1) -> 1
+        }
+    }
+}
+problem HumanEval/123 {
+    code {
+        func get_odd_collatz(n:int) -> list<int>
+    }
+    tests {
+        template nse {
+            (14) -> [1, 5, 7, 11, 13, 17]
+            (5) -> [1, 5]
+            (12) -> [1, 3, 5]
+            (1) -> [1]
+        }
+    }
+}
+problem HumanEval/124 {
+    code {
+        func valid_date(date:string) -> bool
+    }
+    tests {
+        template nse {
+            ("03-11-2000") -> true
+            ("15-01-2012") -> false
+            ("04-0-2040") -> false
+            ("06-04-2020") -> true
+            ("01-01-2007") -> true
+            ("03-32-2011") -> false
+            ("") -> false
+            ("04-31-3000") -> false
+            ("06-06-2005") -> true
+            ("21-31-2000") -> false
+            ("04-12-2003") -> true
+            ("04122003") -> false
+            ("20030412") -> false
+            ("2003-04") -> false
+            ("2003-04-12") -> false
+            ("04-2003") -> false
+        }
+    }
+}
+problem HumanEval/125 {
+    code {
+        func split_words(txt:string) -> list<string>
+    }
+    tests {
+        template nse {
+            ("Hello world!") -> ["Hello","world!"]
+            ("Hello,world!") -> ["Hello","world!"]
+            ("Hello world,!") -> ["Hello","world,!"]
+            ("Hello,Hello,world !") -> ["Hello,Hello,world","!"]
+            ("abcdef") -> ["3"]
+            ("aaabb") -> ["2"]
+            ("aaaBb") -> ["1"]
+            ("") -> ["0"]
+        }
+    }
+}
+problem HumanEval/126 {
+    code {
+        func is_sorted(lst:list<int>) -> bool
+    }
+    tests {
+        template nse {
+            ([5]) -> true
+            ([1, 2, 3, 4, 5]) -> true
+            ([1, 3, 2, 4, 5]) -> false
+            ([1, 2, 3, 4, 5, 6]) -> true
+            ([1, 2, 3, 4, 5, 6, 7]) -> true
+            ([1, 3, 2, 4, 5, 6, 7]) -> false
+            ([]) -> true
+            ([1]) -> true
+            ([3, 2, 1]) -> false
+            ([1, 2, 2, 2, 3, 4]) -> false
+            ([1, 2, 3, 3, 3, 4]) -> false
+            ([1, 2, 2, 3, 3, 4]) -> true
+            ([1, 2, 3, 4]) -> true
+        }
+    }
+}
+problem HumanEval/127 {
+    code {
+        func intersection(interval1:list<int>, interval2:list<int>) -> string
+    }
+    tests {
+        template nse {
+            ([1, 2], [2, 3]) -> "NO"
+            ([-1, 1], [0, 4]) -> "NO"
+            ([-3, -1], [-5, 5]) -> "YES"
+            ([-2, 2], [-4, 0]) -> "YES"
+            ([-11, 2], [-1, -1]) -> "NO"
+            ([1, 2], [3, 5]) -> "NO"
+            ([1, 2], [1, 2]) -> "NO"
+            ([-2, -2], [-3, -2]) -> "NO"
+        }
+    }
+}
+problem HumanEval/128 {
+    code {
+        func prod_signs(arr:list<int>) -> int?
+    }
+    tests {
+        template nse {
+            ([1, 2, 2, -4]) -> -9
+            ([0, 1]) -> 0
+            ([1, 1, 1, 2, 3, -1, 1]) -> -10
+            ([]) -> null
+            ([2, 4, 1, 2, -1, -1, 9]) -> 20
+            ([-1, 1, -1, 1]) -> 4
+            ([-1, 1, 1, 1]) -> -4
+            ([-1, 1, 1, 0]) -> 0
+        }
+    }
+}
+problem HumanEval/129 {
+    code {
+        func min_path(grid:list<list<int>>, k:int) -> list<int>
+    }
+    tests {
+        template nse {
+            ([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3) -> [1, 2, 1]
+            ([[5, 9, 3], [4, 1, 6], [7, 8, 2]], 1) -> [1]
+            ([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]], 4) -> [1, 2, 1, 2]
+            ([[6, 4, 13, 10], [5, 7, 12, 1], [3, 16, 11, 15], [8, 14, 9, 2]], 7) -> [1, 10, 1, 10, 1, 10, 1]
+            ([[8, 14, 9, 2], [6, 4, 13, 15], [5, 7, 1, 12], [3, 10, 11, 16]], 5) -> [1, 7, 1, 7, 1]
+            ([[11, 8, 7, 2], [5, 16, 14, 4], [9, 3, 15, 6], [12, 13, 10, 1]], 9) -> [1, 6, 1, 6, 1, 6, 1, 6, 1]
+            ([[12, 13, 10, 1], [9, 3, 15, 6], [5, 16, 14, 4], [11, 8, 7, 2]], 12) -> [1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6]
+            ([[2, 7, 4], [3, 1, 5], [6, 8, 9]], 8) -> [1, 3, 1, 3, 1, 3, 1, 3]
+            ([[6, 1, 5], [3, 8, 9], [2, 7, 4]], 8) -> [1, 5, 1, 5, 1, 5, 1, 5]
+            ([[1, 2], [3, 4]], 10) -> [1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+            ([[1, 3], [3, 2]], 10) -> [1, 3, 1, 3, 1, 3, 1, 3, 1, 3]
+        }
+    }
+}
+problem HumanEval/130 {
+    code {
+        func tri(n:int) -> list<int>
+    }
+    tests {
+        template nse {
+            (3) -> [1, 3, 2, 8]
+            (4) -> [1, 3, 2, 8, 3]
+            (5) -> [1, 3, 2, 8, 3, 15]
+            (6) -> [1, 3, 2, 8, 3, 15, 4]
+            (7) -> [1, 3, 2, 8, 3, 15, 4, 24]
+            (8) -> [1, 3, 2, 8, 3, 15, 4, 24, 5]
+            (9) -> [1, 3, 2, 8, 3, 15, 4, 24, 5, 35]
+            (20) -> [1, 3, 2, 8, 3, 15, 4, 24, 5, 35, 6, 48, 7, 63, 8, 80, 9, 99, 10, 120, 11]
+            (0) -> [1]
+            (1) -> [1, 3]
+        }
+    }
+}
+problem HumanEval/131 {
+    code {
+        func digits(n:int) -> int
+    }
+    tests {
+        template nse {
+            (5) -> 5
+            (54) -> 5
+            (120) ->1
+            (5014) -> 5
+            (98765) -> 315
+            (5576543) -> 2625
+            (2468) -> 0
+        }
+    }
+}
+problem HumanEval/132 {
+    code {
+        func is_nested(s:string) -> bool
+    }
+    tests {
+        template nse {
+            ("[[]]") -> true
+            ("[]]]]]]][[[[[]") -> false
+            ("[][]") -> false
+            ("[]") -> false
+            ("[[[[]]]]") -> true
+            ("[]]]]]]]]]]") -> false
+            ("[][][[]]") -> true
+            ("[[]") -> false
+            ("[]]") -> false
+            ("[[]][[") -> true
+            ("[[][]]") -> true
+            ("") -> false
+            ("[[[[[[[[") -> false
+            ("]]]]]]]]") -> false
+        }
+    }
+}
+problem HumanEval/133 {
+    code {
+        func sum_squares(lst:list<double>) -> int
+    }
+    tests {
+        template nse {
+            ([1.0, 2.0, 3.0]) -> 14
+            ([1.0, 2.0, 3.0]) -> 14
+            ([1.0, 3.0, 5.0, 7.0]) -> 84
+            ([1.4, 4.2, 0.0]) -> 29
+            ([-2.4, 1.0, 1.0]) -> 6
+            ([100.0, 1.0, 15.0, 2.0]) -> 10230
+            ([10000.0, 10000.0]) -> 200000000
+            ([-1.4, 4.6, 6.3]) -> 75
+            ([-1.4, 17.9, 18.9, 19.9]) -> 1086
+            ([0.0]) -> 0
+            ([-1.0]) -> 1
+            ([-1.0, 1.0, 0.0]) -> 2
+        }
+    }
+}
+problem HumanEval/134 {
+    code {
+        func check_if_last_char_is_a_letter(txt:string) -> bool
+    }
+    tests {
+        template nse {
+            ("apple") -> false
+            ("apple pi e") -> true
+            ("eeeee") -> false
+            ("A") -> true
+            ("Pumpkin pie ") -> false
+            ("Pumpkin pie 1") -> false
+            ("") -> false
+            ("eeeee e ") -> false
+            ("apple pie") -> false
+            ("apple pi e ") -> false
+        }
+    }
+}
+problem HumanEval/135 {
+    code {
+        func can_arrange(arr:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([1,2,4,3,5]) -> 3
+            ([1,2,4,5]) -> -1
+            ([1,4,2,5,6,7,8,9,10]) -> 2
+            ([4,8,5,7,3]) -> 4
+            ([]) -> -1
+        }
+    }
+}
+problem HumanEval/136 {
+    code {
+        func largest_smallest_integers(lst:list<int>) -> list<int?>
+    }
+    tests {
+        template nse {
+            ([2, 4, 1, 3, 5, 7]) -> [null, 1]
+            ([2, 4, 1, 3, 5, 7, 0]) -> [null, 1]
+            ([1, 3, 2, 4, 5, 6, -2]) -> [-2, 1]
+            ([4, 5, 3, 6, 2, 7, -7]) -> [-7, 2]
+            ([7, 3, 8, 4, 9, 2, 5, -9]) -> [-9, 2]
+            ([]) -> [null, null]
+            ([0]) -> [null, null]
+            ([-1, -3, -5, -6]) -> [-1, null]
+            ([-1, -3, -5, -6, 0]) -> [-1, null]
+            ([-6, -4, -4, -3, 1]) -> [-3, 1]
+            ([-6, -4, -4, -3, -100, 1]) -> [-3, 1]
+        }
+    }
+}
+problem HumanEval/137 {
+    code {
+        func compare_one(a:any, b:any) -> double?
+    }
+    tests {
+        template nse {
+            (1, 2) -> 2.0
+            (1, 2.5) -> 2.5
+            (2, 3) -> 3.0
+            (5, 6) -> 6.0
+            (1, "2,3") -> 2.3
+            ("5,1", "6") -> 6.0
+            ("1", "2") -> 2.0
+            ("1", 1) -> null
+        }
+    }
+}
+problem HumanEval/138 {
+    code {
+        func is_equal_to_sum_even(n:int) -> bool
+    }
+    tests {
+        template nse {
+            (4) -> false
+            (6) -> false
+            (8) -> true
+            (10) -> true
+            (11) -> false
+            (12) -> true
+            (13) -> false
+            (16) -> true
+        }
+    }
+}
+problem HumanEval/139 {
+    code {
+        func special_factorial(n:int) -> int
+    }
+    tests {
+        template nse {
+            (4) -> 288
+            (5) -> 34560
+            (6) -> 24883200
+            (1) -> 1
+        }
+    }
+}
+problem HumanEval/140 {
+    code {
+        func fix_spaces(txt:string) -> string
+    }
+    tests {
+        template nse {
+            ("Example") -> "Example"
+            ("Mudasir Hanif ") -> "Mudasir_Hanif_"
+            ("Yellow Yellow  Dirty  Fellow") -> "Yellow_Yellow__Dirty__Fellow"
+            ("Exa   mple") -> "Exa-mple"
+            ("   Exa 1 2 2 mple") -> "-Exa_1_2_2_mple"
+        }
+    }
+}
+problem HumanEval/141 {
+    code {
+        func file_name_check(file_name:string) -> string
+    }
+    tests {
+        template nse {
+            ("example.txt") -> "Yes"
+            ("1example.dll") -> "No"
+            ("s1sdf3.asd") -> "No"
+            ("K.dll") -> "Yes"
+            ("MY16FILE3.exe") -> "Yes"
+            ("His12FILE94.exe") -> "No"
+            ("_Y.txt") -> "No"
+            ("?aREYA.exe") -> "No"
+            ("/this_is_valid.dll") -> "No"
+            ("this_is_valid.wow") -> "No"
+            ("this_is_valid.txt") -> "Yes"
+            ("this_is_valid.txtexe") -> "No"
+            ("#this2_i4s_5valid.ten") -> "No"
+            ("@this1_is6_valid.exe") -> "No"
+            ("this_is_12valid.6exe4.txt") -> "No"
+            ("all.exe.txt") -> "No"
+            ("I563_No.exe") -> "Yes"
+            ("Is3youfault.txt") -> "Yes"
+            ("no_one#knows.dll") -> "Yes"
+            ("1I563_Yes3.exe") -> "No"
+            ("I563_Yes3.txtt") -> "No"
+            ("final..txt") -> "No"
+            ("final132") -> "No"
+            ("_f4indsartal132.") -> "No"
+        }
+    }
+}
+problem HumanEval/142 {
+    code {
+        func sum_squares(lst:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([1,2,3]) -> 6
+            ([1,4,9]) -> 14
+            ([]) -> 0
+            ([1,1,1,1,1,1,1,1,1]) -> 9
+            ([-1,-1,-1,-1,-1,-1,-1,-1,-1]) -> -3
+            ([0]) -> 0
+            ([-1,-5,2,-1,-5]) -> -126
+            ([-56,-99,1,0,-2]) -> 3030
+            ([-1,0,0,0,0,0,0,0,-1]) -> 0
+            ([-16, -9, -2, 36, 36, 26, -20, 25, -40, 20, -4, 12, -26, 35, 37]) -> -14196
+            ([-1, -3, 17, -1, -15, 13, -1, 14, -14, -12, -5, 14, -14, 6, 13, 11, 16, 16, 4, 10]) -> -1448
+        }
+    }
+}
+problem HumanEval/143 {
+    code {
+        func words_in_sentence(sentence:string) -> string
+    }
+    tests {
+        template nse {
+            ("This is a test") -> "is"
+            ("lets go for swimming") -> "go for"
+            ("there is no place available here") -> "there is no place"
+            ("Hi I am Hussein") -> "Hi am Hussein"
+            ("go for it") -> "go for it"
+            ("here") -> ""
+            ("here is") -> "is"
+        }
+    }
+}
+problem HumanEval/144 {
+    code {
+        func simplify(x:string, n:string) -> bool
+    }
+    tests {
+        template nse {
+            ("1/5", "5/1") -> true
+            ("1/6", "2/1") -> false
+            ("5/1", "3/1") -> true
+            ("7/10", "10/2") -> false
+            ("2/10", "50/10") -> true
+            ("7/2", "4/2") -> true
+            ("11/6", "6/1") -> true
+            ("2/3", "5/2") -> false
+            ("5/2", "3/5") -> false
+            ("2/4", "8/4") -> true
+            ("2/4", "4/2") -> true
+            ("1/5", "5/1") -> true
+            ("1/5", "1/5") -> false
+        }
+    }
+}
+problem HumanEval/145 {
+    code {
+        func order_by_points(nums:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([1, 11, -1, -11, -12]) -> [-1, -11, 1, -12, 11]
+            ([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) -> [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]
+            ([]) -> []
+            ([1, -11, -32, 43, 54, -98, 2, -3]) -> [-3, -32, -98, -11, 1, 2, 43, 54]
+            ([1,2,3,4,5,6,7,8,9,10,11]) -> [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]
+            ([0,6,6,-76,-21,23,4]) -> [-76, -21, 0, 4, 23, 6, 6]
+            ([-696637, -552796, 929111, 664021, -805088, 519571, -379616, 119592, -118738, -743386, -36465, -655514, -487105, -480773, 810461, 650482, -67193, -62904, -494232, 383026, -369436, 413277, 732061, 454198, -933415, 159762, -460614, -347205, 739084, 797506, -518618, 150222, 568493, 255361, -345051, 212151, -605161, -279048, 145341, -162775, 911768, 670406, -787503, -293176, 974705, -55905, -56462, 438395, 571551, 45600, -231354, 880983, 288612, 299838, 671956, -10896, 167865, 44015, 280734, 617947, -702890, 604827, -118995, -784624, 856078, -1285, -702694, -680262, 15365, 378033, 679802, 912863, 48747, -496586, -81747, 41926, 941867, -829656, 818243, -529252, -190048, -851509, 483176, -593369, 434135, -779646, 863939, 630065, -839453, 489694, 561713, 912816, 573270, -503539, -537191, 843096, 285723, -725231, -793065, 919093, -993731, -971008, -421142, -245871, 699018, -181753, 269586, -224562, 647892, -836744, -193007, -796960, -36268, 828870, -931712, -788672, 688855, -664912, -711256, -329000, -43839, -273092, -612548, -735, -513862, -947832, 418345, 649823, -434775, 667171, -62243, 660654, 409512, 214468, -871984, -407717, 917938, -253911, -45137, -653220, -418781, 157446, 951737, 888413, -602865, -996932, 146420, -920312, 791549, -812067, -533837, 134559, -928755, -322190, -75288, -425123, 434282, -345292, 638161, -265450, -585562, -70229, 517690, -705493, 978872, 108828, 956439, 868300, -949018, -157656, 489850, -250390, 915731, -191202, 511812, -478200, 460006, -106866, 663785, 536812, -634114, -774916, -586964, 579960, -75621, 595344, 351670, 244100, -8532, -899281, -872037, 342887, 396392, 365042, -618780, -753167, 555140, -626822, 901440, -867915]) -> [-920312, -735, -8532, -931712, -62243, -725231, -421142, -653220, -70229, -933415, -605161, -971008, -634114, -75621, -711256, -329000, -812067, -62904, -425123, -81747, -322190, 244100, -872037, 150222, -345051, 212151, -702890, -680262, -851509, -45137, -805088, -460614, -56462, -949018, -191202, -478200, -655514, -67193, -55905, -231354, 44015, -1285, -702694, -993731, -612548, -705493, -626822, -347205, 45600, -529252, -503539, -513862, -947832, -602865, -250390, -753167, -494232, -787503, -839453, -537191, -793065, -836744, -664912, -75288, 460006, -743386, -487105, -784624, -224562, -253911, 146420, -36465, 145341, -193007, -407717, -928755, -265450, 511812, -618780, 901440, 664021, 732061, -518618, -36268, -43839, -273092, -533837, -345292, 810461, 15365, -829656, -190048, 434135, 630065, -996932, -774916, 365042, 555140, -867915, -480773, 409512, -871984, -418781, -585562, -899281, 383026, 255361, -10896, 41926, -434775, 351670, 929111, 670406, 561713, -245871, -181753, -796960, 434282, -552796, 413277, -293176, 571551, 280734, 378033, 573270, -788672, -696637, 650482, -369436, -593369, -779646, 418345, 214468, 638161, 868300, -106866, 536812, -379616, -118738, -279048, -162775, 818243, 915731, 119592, 288612, 604827, 912816, 285723, 660654, 157446, 134559, 108828, 519571, 667171, 517690, -157656, -586964, 912863, 483176, 159762, 48747, -496586, 843096, 595344, 454198, 739084, -118995, 919093, 911768, 974705, 438395, 679802, 649823, 951737, 888413, 342887, 396392, 167865, 699018, 828870, 797506, 671956, 617947, 856078, 489850, 568493, 941867, 791549, 663785, 880983, 269586, 647892, 956439, 579960, 917938, 863939, 299838, 489694, 688855, 978872]
+        }
+    }
+}
+problem HumanEval/146 {
+    code {
+        func special_filter(nums:list<int>) -> int
+    }
+    tests {
+        template nse {
+            ([5, -2, 1, -5]) -> 0
+            ([15, -73, 14, -15]) -> 1
+            ([33, -2, -3, 45, 21, 109]) -> 2
+            ([43, -12, 93, 125, 121, 109]) -> 4
+            ([71, -2, -33, 75, 21, 19]) -> 3
+            ([1]) -> 0
+            ([]) -> 0
+        }
+    }
+}
+problem HumanEval/147 {
+    code {
+        func get_max_triples(n:int) -> int
+    }
+    tests {
+        template nse {
+            (5) -> 1
+            (6) -> 4
+            (10) -> 36
+            (100) -> 53361
+        }
+    }
+}
+problem HumanEval/148 {
+    code {
+        func bf(planet1:string, planet2:string) -> list<string>
+    }
+    tests {
+        template nse {
+            ("Jupiter", "Neptune") -> ["Saturn", "Uranus"]
+            ("Earth", "Mercury") -> ["Venus"]
+            ("Mercury", "Uranus") -> ["Venus", "Earth", "Mars", "Jupiter", "Saturn"]
+            ("Neptune", "Venus") -> ["Earth", "Mars", "Jupiter", "Saturn", "Uranus"]
+            ("Earth", "Earth") -> []
+            ("Mars", "Earth") -> []
+            ("Jupiter", "Makemake") -> []
+        }
+    }
+}
+problem HumanEval/149 {
+    code {
+        func sorted_list_sum(lst:list<string>) -> list<string>
+    }
+    tests {
+        template nse {
+            (["aa", "a", "aaa"]) -> ["aa"]
+            (["school", "AI", "asdf", "b"]) -> ["AI", "asdf", "school"]
+            (["d", "b", "c", "a"]) -> []
+            (["d", "dcba", "abcd", "a"]) -> ["abcd", "dcba"]
+            (["AI", "ai", "au"]) -> ["AI", "ai", "au"]
+            (["a", "b", "b", "c", "c", "a"]) -> []
+            (["aaaa", "bbbb", "dd", "cc"]) -> ["cc", "dd", "aaaa", "bbbb"]
+        }
+    }
+}
+problem HumanEval/150 {
+    code {
+        func x_or_y(n:int, x:int, y:int) -> int
+    }
+    tests {
+        template nse {
+            (7, 34, 12) -> 34
+            (15, 8, 5) -> 5
+            (3, 33, 5212) -> 33
+            (1259, 3, 52) -> 3
+            (7919, -1, 12) -> -1
+            (3609, 1245, 583) -> 583
+            (91, 56, 129) -> 129
+            (6, 34, 1234) -> 1234
+            (1, 2, 0) -> 0
+            (2, 2, 0) -> 2
+        }
+    }
+}
+problem HumanEval/151 {
+    code {
+        func double_the_difference(lst:list<double>) -> int
+    }
+    tests {
+        template nse {
+            ([]) -> 0
+            ([5.0, 4.0]) -> 25
+            ([0.1, 0.2, 0.3]) -> 0
+            ([-10.0, -20.0, -30.0]) -> 0
+            ([-1.0, -2.0, 8.0]) -> 0
+            ([0.2, 3.0, 5.0]) -> 34
+        }
+    }
+}
+problem HumanEval/152 {
+    code {
+        func compare(game:list<int>, guess:list<int>) -> list<int>
+    }
+    tests {
+        template nse {
+            ([1,2,3,4,5,1],[1,2,3,4,2,-2]) -> [0,0,0,0,3,3]
+            ([0,5,0,0,0,4],[4,1,1,0,0,-2]) -> [4,4,1,0,0,6]
+            ([1,2,3,4,5,1],[1,2,3,4,2,-2]) -> [0,0,0,0,3,3]
+            ([0,0,0,0,0,0],[0,0,0,0,0,0]) -> [0,0,0,0,0,0]
+            ([1,2,3],[-1,-2,-3]) -> [2,4,6]
+            ([1,2,3,5],[-1,2,3,4]) -> [2,0,0,1]
+        }
+    }
+}
+problem HumanEval/153 {
+    code {
+        func strongest_extension(class_name:string, extensions:list<string>) -> string
+    }
+    tests {
+        template nse {
+            ("Watashi", ["tEN", "niNE", "eIGHt8OKe"]) -> "Watashi.eIGHt8OKe"
+            ("Boku123", ["nani", "NazeDa", "YEs.WeCaNe", "32145tggg"]) -> "Boku123.YEs.WeCaNe"
+            ("__YESIMHERE", ["t", "eMptY", "nothing", "zeR00", "NuLl__", "123NoooneB321"]) -> "__YESIMHERE.NuLl__"
+            ("K", ["Ta", "TAR", "t234An", "cosSo"]) -> "K.TAR"
+            ("__HAHA", ["Tab", "123", "781345", "-_-"]) -> "__HAHA.123"
+            ("YameRore", ["HhAas", "okIWILL123", "WorkOut", "Fails", "-_-"]) -> "YameRore.okIWILL123"
+            ("finNNalLLly", ["Die", "NowW", "Wow", "WoW"]) -> "finNNalLLly.WoW"
+            ("_", ["Bb", "91245"]) -> "_.Bb"
+            ("Sp", ["671235", "Bb"]) -> "Sp.671235"
+        }
+    }
+}
+problem HumanEval/154 {
+    code {
+        func cycpattern_check(a:string, b:string) -> bool
+    }
+    tests {
+        template nse {
+            ("xyzw","xyw") -> false
+            ("yello","ell") -> true
+            ("whattup","ptut") -> false
+            ("efef","fee") -> true
+            ("abab","aabb") -> false
+            ("winemtt","tinem") -> true
+        }
+    }
+}
+problem HumanEval/155 {
+    code {
+        func even_odd_count(num:int) -> list<int>
+    }
+    tests {
+        template nse {
+            (7) -> [0, 1]
+            (-78) -> [1, 1]
+            (3452) -> [2, 2]
+            (346211) -> [3, 3]
+            (-345821) -> [3, 3]
+            (-2) -> [1, 0]
+            (-45347) -> [2, 3]
+            (0) -> [1, 0]
+        }
+    }
+}
+problem HumanEval/156 {
+    code {
+        func int_to_mini_roman(num:int) -> string
+    }
+    tests {
+        template nse {
+            (19) -> "xix"
+            (152) -> "clii"
+            (251) -> "ccli"
+            (426) -> "cdxxvi"
+            (500) -> "d"
+            (1) -> "i"
+            (4) -> "iv"
+            (43) -> "xliii"
+            (90) -> "xc"
+            (94) -> "xciv"
+            (532) -> "dxxxii"
+            (900) -> "cm"
+            (994) -> "cmxciv"
+            (1000) -> "m"
+        }
+    }
+}
+problem HumanEval/157 {
+    code {
+        func right_angle_triangle(a:int, b:int, c:int) -> bool
+    }
+    tests {
+        template nse {
+            (3, 4, 5) -> true
+            (1, 2, 3) -> false
+            (10, 6, 8) -> true
+            (2, 2, 2) -> false
+            (7, 24, 25) -> true
+            (10, 5, 7) -> false
+            (5, 12, 13) -> true
+            (15, 8, 17) -> true
+            (48, 55, 73) -> true
+            (1, 1, 1) -> false
+            (2, 2, 10) -> false
+
+        }
+    }
+}
+problem HumanEval/158 {
+    code {
+        func find_max(words:list<string>) -> string
+    }
+    tests {
+        template nse {
+            (["name", "of", "string"]) -> "string"
+            (["name", "enam", "game"]) -> "enam"
+            (["aaaaaaa", "bb", "cc"]) -> "aaaaaaa"
+            (["abc", "cba"]) -> "abc"
+            (["play", "this", "game", "of","footbott"]) -> "footbott"
+            (["we", "are", "gonna", "rock"]) -> "gonna"
+            (["we", "are", "a", "mad", "nation"]) -> "nation"
+            (["this", "is", "a", "prrk"]) -> "this"
+            (["b"]) -> "b"
+            (["play", "play", "play"]) -> "play"
+        }
+    }
+}
+problem HumanEval/159 {
+    code {
+        func eat(num:int, need:int, remaining:int) -> list<int>
+    }
+    tests {
+        template nse {
+            (5, 6, 10) -> [11, 4]
+            (4, 8, 9) -> [12, 1]
+            (1, 10, 10) -> [11, 0]
+            (2, 11, 5) -> [7, 0]
+            (4, 5, 7) -> [9, 2]
+            (4, 5, 1) -> [5, 0]
+        }
+    }
+}
+problem HumanEval/160 {
+    code {
+        func do_algebra(operators:list<string>, operands:list<int>) -> int
+    }
+    tests {
+        template nse {
+            (["**", "*", "+"], [2, 3, 4, 5]) -> 37
+            (["+", "*", "-"], [2, 3, 4, 5]) -> 9
+            (["//", "*"], [7, 3, 4]) -> 8
+        }
+    }
+}
+problem HumanEval/161 {
+    code {
+        func solve(s:string) -> string
+    }
+    tests {
+        template nse {
+            ("AsDf") -> "aSdF"
+            ("1234") -> "4321"
+            ("ab") -> "AB"
+            ("#a@C") -> "#A@c"
+            ("#AsdfW^45") -> "#aSDFw^45"
+            ("#6@2") -> "2@6#"
+            ("#$a^D") -> "#$A^d"
+            ("#ccc") -> "#CCC"
+        }
+    }
+}
+problem HumanEval/162 {
+    code {
+        func string_to_md5(txt:string) -> string?
+    }
+    tests {
+        template nse {
+            ("Hello world") -> "3e25960a79dbc69b674cd4ec67a72c62"
+            ("") -> null
+            ("A B C") -> "0ef78513b0cb8cef12743f5aeb35f888"
+            ("password") -> "5f4dcc3b5aa765d61d8327deb882cf99"
+        }
+    }
+}
+problem HumanEval/163 {
+    code {
+        func generate_integers(a:int, b:int) -> list<int>
+    }
+    tests {
+        template nse {
+            (2, 10) -> [2, 4, 6, 8]
+            (10, 2) -> [2, 4, 6, 8]
+            (132, 2) -> [2, 4, 6, 8]
+            (17,89) -> []
+        }
+    }
+}

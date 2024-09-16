@@ -1,0 +1,6 @@
+sources:
+  main: src/main.rs
+
+commands:
+  build: rustc src/main.rs
+  run: ./main

@@ -1,0 +1,7 @@
+sources:
+  main: src/Main.kt
+
+commands:
+  build: kotlinc src/Main.kt
+  run: kotlin src.MainKt
+

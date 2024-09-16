@@ -1,0 +1,7 @@
+sources:
+  main: src/main.dart
+
+commands:
+  build: dart analyze --no-fatal-warnings src/main.dart
+  run: dart src/main.dart
+

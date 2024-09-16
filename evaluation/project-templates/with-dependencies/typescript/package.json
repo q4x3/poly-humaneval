@@ -1,0 +1,13 @@
+{
+  "name": "test",
+  "version": "0.1",
+  "main": "src/main.ts",
+  "type": "module",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.3",
+    "typescript": "^5.2.2"
+  }
+}

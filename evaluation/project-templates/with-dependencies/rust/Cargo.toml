@@ -1,0 +1,8 @@
+[package]
+name = "test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+md-5 = "0.10.6"
+regex = "1.9.6"

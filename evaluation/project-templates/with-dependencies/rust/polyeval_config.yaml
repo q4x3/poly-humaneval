@@ -1,0 +1,9 @@
+sources:
+  main: src/main.rs
+  target: src/target.rs
+
+commands:
+  install: cargo fetch
+  build: cargo build --release
+  run: cargo run --release
+

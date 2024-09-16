@@ -1,0 +1,9 @@
+sources:
+  main: src/main.dart
+  target: src/target.dart
+
+commands:
+  install: dart pub get
+  build: dart analyze --no-fatal-warnings src/main.dart src/target.dart
+  run: dart src/main.dart
+

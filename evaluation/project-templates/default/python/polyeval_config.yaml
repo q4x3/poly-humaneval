@@ -1,0 +1,7 @@
+sources:
+  main: src/main.py
+
+commands:
+  build: python3 -m py_compile src/main.py
+  run: python3 src/main.py
+

@@ -1,0 +1,9 @@
+sources:
+  main: src/main.swift
+  target: src/target.swift
+
+commands:
+  install: swift package resolve
+  build: swift build
+  run: swift run
+

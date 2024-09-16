@@ -1,0 +1,6 @@
+sources:
+  main: src/main.php
+
+commands:
+  build: php -l src/main.php
+  run: php src/main.php

@@ -1,0 +1,56 @@
+{
+    "cpp": {
+        "python": 81.1
+    },
+    "csharp": {
+        "python": 91.46
+    },
+    "dart": {
+        "python": 82.32
+    },
+    "go": {
+        "python": 90.85
+    },
+    "java": {
+        "python": 87.8
+    },
+    "javascript": {
+        "python": 83.54
+    },
+    "kotlin": {
+        "python": 85.37
+    },
+    "php": {
+        "python": 82.32
+    },
+    "python": {
+        "cpp": 67.68,
+        "csharp": 70.73,
+        "dart": 58.54,
+        "go": 58.54,
+        "java": 71.34,
+        "javascript": 72.56,
+        "kotlin": 77.44,
+        "php": 66.46,
+        "ruby": 63.41,
+        "rust": 59.15,
+        "scala": 71.95,
+        "swift": 62.2,
+        "typescript": 70.12
+    },
+    "ruby": {
+        "python": 90.24
+    },
+    "rust": {
+        "python": 87.2
+    },
+    "scala": {
+        "python": 88.41
+    },
+    "swift": {
+        "python": 84.76
+    },
+    "typescript": {
+        "python": 84.76
+    }
+}

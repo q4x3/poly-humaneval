@@ -1,0 +1,9 @@
+{
+  "name": "test",
+  "version": "0.1",
+  "main": "src/main.js",
+  "type": "module",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

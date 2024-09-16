@@ -1,0 +1,9 @@
+sources:
+  main: src/main.js
+  target: src/target.js
+
+commands:
+  install: pnpm install
+  build: node -c src/main.js src/target.js
+  run: node src/main.js
+
